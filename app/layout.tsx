@@ -4,6 +4,12 @@ import localFont from 'next/font/local';
 import { Toaster } from 'sonner';
 
 import ErrorBoundary from '@/components/ErrorBoundary/ErrorBoundary';
+import Providers from './provider';
+
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+
+// export const dynamic = 'force-dynamic';
+
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
   variable: '--font-geist-sans',
@@ -25,7 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} m-0 h-full p-0 antialiased`}
       >
-        <ErrorBoundary>{children}</ErrorBoundary>
+        <ErrorBoundary>
+          <Providers>
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </Providers>
+        </ErrorBoundary>
         <Toaster richColors position="bottom-right" />
       </body>
     </html>

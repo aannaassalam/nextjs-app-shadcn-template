@@ -1,6 +1,11 @@
 'use client';
 
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+} from '@radix-ui/react-icons';
 import * as React from 'react';
 import { DayPicker } from 'react-day-picker';
 
@@ -26,7 +31,7 @@ function Calendar({
         caption_label: 'text-sm font-medium',
         nav: 'space-x-1 flex items-center',
         nav_button: cn(
-          buttonVariants({ variant: 'outline-solid' }),
+          buttonVariants({ variant: 'outline' }),
           'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100'
         ),
         nav_button_previous: 'absolute left-1',
@@ -60,8 +65,22 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        IconLeft: () => <ChevronLeftIcon className="size-4" />,
-        IconRight: () => <ChevronRightIcon className="size-4" />,
+        Chevron: ({ orientation = 'right', className, size }) => {
+          const Icon =
+            orientation === 'left'
+              ? ChevronLeftIcon
+              : orientation === 'right'
+                ? ChevronRightIcon
+                : orientation === 'up'
+                  ? ChevronUpIcon
+                  : ChevronDownIcon;
+          return (
+            <Icon
+              className={cn('size-4', className)}
+              style={size ? { width: size, height: size } : undefined}
+            />
+          );
+        },
       }}
       {...props}
     />

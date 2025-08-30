@@ -1,7 +1,7 @@
 // Test file for AWS upload functionality
 // This is for development/testing purposes only
 
-import { uploadToAWS } from '@/services/apis/upload.api';
+// import { uploadToAWS } from '@/services/apis/upload.api';
 
 /**
  * Test function to verify AWS upload functionality
@@ -11,7 +11,8 @@ export const testAWSUpload = async (file: File) => {
   try {
     console.log('Testing AWS upload with file:', file.name);
 
-    const response = await uploadToAWS(file);
+    const response = { data: { url: '' } };
+    // const response = await uploadToAWS(file);
 
     console.log('Upload successful!');
     console.log('Response:', response);

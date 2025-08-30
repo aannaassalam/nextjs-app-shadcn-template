@@ -6,7 +6,7 @@ import React, { useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
-import { uploadToAWS } from '@/services/apis/upload.api';
+// import { uploadToAWS } from '@/services/apis/upload.api';
 import {
   generatePreviewUrl,
   revokePreviewUrl,
@@ -55,7 +55,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
       setPreviewUrl(preview);
 
       // Upload to AWS
-      const response = await uploadToAWS(file);
+      // const response = await uploadToAWS(file);
+      const response = await { status: 200, data: { url: '' } };
 
       if (response.status === 200 && response.data?.url) {
         // Revoke the preview URL and use the uploaded URL

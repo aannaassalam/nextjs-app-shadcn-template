@@ -14,12 +14,3 @@ export {
   isUserAuthenticated,
   isUserConsultant,
 } from '../utils';
-
-// Export role guard components
-export {
-  AdminOnly,
-  AuthenticatedOnly,
-  ConsultantOnly,
-  RoleGuard,
-  withRoleGuard,
-} from '../components/auth/RoleGuard';

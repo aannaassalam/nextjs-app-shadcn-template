@@ -7,7 +7,7 @@
 
 import { handleApiError, handleApiSuccess } from '@/utils/apiErrorHandler';
 
-import http from '../services/http';
+import axiosInstance from '../api/axiosInstance';
 
 // Example interface for your data
 interface ExampleData {
@@ -32,7 +32,7 @@ export const exampleAPI = {
   // Create operation
   create: async (data: Partial<ExampleData>): Promise<ExampleResponse> => {
     try {
-      const response = await http.post('/api/v1/example', data);
+      const response = await axiosInstance.post('/api/v1/example', data);
 
       // Show success toast automatically
       handleApiSuccess('Item created successfully');
@@ -57,7 +57,7 @@ export const exampleAPI = {
         query += `&search=${encodeURIComponent(search.trim())}`;
       }
 
-      const response = await http.get(`/api/v1/example${query}`);
+      const response = await axiosInstance.get(`/api/v1/example${query}`);
 
       // Note: Usually no success toast for read operations
       // handleApiSuccess('Items fetched successfully');
@@ -72,7 +72,7 @@ export const exampleAPI = {
   // Read operation (get by ID)
   getById: async (id: string): Promise<ExampleResponse> => {
     try {
-      const response = await http.get(`/api/v1/example/${id}`);
+      const response = await axiosInstance.get(`/api/v1/example/${id}`);
       return response.data;
     } catch (error) {
       handleApiError(error, 'Failed to fetch item details');
@@ -86,7 +86,7 @@ export const exampleAPI = {
     data: Partial<ExampleData>
   ): Promise<ExampleResponse> => {
     try {
-      const response = await http.patch(`/api/v1/example/${id}`, data);
+      const response = await axiosInstance.patch(`/api/v1/example/${id}`, data);
 
       // Show success toast automatically
       handleApiSuccess('Item updated successfully');
@@ -101,7 +101,7 @@ export const exampleAPI = {
   // Delete operation
   delete: async (id: string): Promise<{ status: number; message: string }> => {
     try {
-      const response = await http.delete(`/api/v1/example/${id}`);
+      const response = await axiosInstance.delete(`/api/v1/example/${id}`);
 
       // Show success toast automatically
       handleApiSuccess('Item deleted successfully');
@@ -122,7 +122,7 @@ export const exampleAPI = {
     customData: CustomOperationData
   ): Promise<ExampleResponse> => {
     try {
-      const response = await http.post(
+      const response = await axiosInstance.post(
         `/api/v1/example/${id}/custom`,
         customData
       );

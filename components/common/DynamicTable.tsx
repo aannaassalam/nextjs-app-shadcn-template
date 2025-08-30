@@ -413,7 +413,7 @@ const DynamicTable = <T,>({
                         key={0}
                         onClick={() => handlePageChange(0)}
                         variant={
-                          adjustedCurrentPage === 0 ? 'default' : 'outline-solid'
+                          adjustedCurrentPage === 0 ? 'default' : 'outline'
                         }
                         size="sm"
                         className={`size-8 p-0 text-sm ${
@@ -444,7 +444,7 @@ const DynamicTable = <T,>({
                         key={i}
                         onClick={() => handlePageChange(i)}
                         variant={
-                          adjustedCurrentPage === i ? 'default' : 'outline-solid'
+                          adjustedCurrentPage === i ? 'default' : 'outline'
                         }
                         size="sm"
                         className={`size-8 p-0 text-sm ${
@@ -477,7 +477,7 @@ const DynamicTable = <T,>({
                         variant={
                           adjustedCurrentPage === pageCount - 1
                             ? 'default'
-                            : 'outline-solid'
+                            : 'outline'
                         }
                         size="sm"
                         className={`size-8 p-0 text-sm ${
